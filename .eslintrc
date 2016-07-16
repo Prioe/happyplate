@@ -27,7 +27,8 @@
   "env": {
     "browser": true,
     "node": true,
-    "es6": true
+    "es6": true,
+    "mocha": true
   },
   "parser": "babel-eslint",
   "plugins": [
@@ -36,7 +37,7 @@
   "rules": {
 
     /*Possible Errors */
-    "comma-dangle": [1, "always-multiline"],
+    "comma-dangle": [1, "never"],
     "no-cond-assign": [1, "except-parens"],
     "no-console": 0,
     "no-constant-condition": 1,
@@ -209,12 +210,9 @@
     "no-plusplus": 1,
 
     /* Babel */
-    // "babel/block-scoped-var": 1,
     "babel/object-shorthand": [1, "always"],
-    // "babel/generator-star": 1, // deprecated
     "babel/generator-star-spacing": [1, "after"],
     "babel/new-cap": 1,
     "babel/object-curly-spacing": [1, "always"]
-    // "babel/space-in-brackets": 1, // deprecated
   }
 }
