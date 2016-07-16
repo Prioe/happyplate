@@ -1,3 +1,10 @@
 import gulp from 'gulp';
+import * as config from './gulp.config';
+import pkg from './package'
 
-gulp.task('default', () => console.log('default'));
+{
+  const merge = Object.assign(pkg, config);
+  gulp.config = merge;
+}
+
+gulp.task('default', () => console.log(gulp));
