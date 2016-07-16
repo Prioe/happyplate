@@ -1,0 +1,19 @@
+{
+  "name": "gulp-boilerplate",
+  "version": "0.1.0",
+  "description": "My gulp boilerplate.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://prio@prio.one/home/prio/git/gulp-boilerplate.git"
+  },
+  "keywords": [
+    "gulp",
+    "boilerplate"
+  ],
+  "author": "Michael Albertz <michael@prio.one>",
+  "license": "MIT"
+}
