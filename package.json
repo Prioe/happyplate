@@ -15,5 +15,10 @@
     "boilerplate"
   ],
   "author": "Michael Albertz <michael@prio.one>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-preset-es2015": "^6.9.0",
+    "gulp": "^3.9.1"
+  }
 }
