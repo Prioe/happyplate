@@ -1,10 +1,12 @@
 import gulp from 'gulp';
 import * as config from './gulp.config';
 import pkg from './package';
+import TaskLoader from './gulp/lib/TaskLoader';
 
 {
-  const merge = Object.assign(pkg, config);
-  gulp.config = merge;
+  gulp.config = Object.assign(pkg, config);
+  const loader = new TaskLoader(gulp, __dirname);
+  loader.loadDir(...gulp.config.paths.tasks);
 }
 
-gulp.task('default', () => console.log(gulp));
+gulp.task('default', done => done);
