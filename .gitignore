@@ -3,6 +3,8 @@
 
 # node.js
 node_modules/
+/dist/
 
 # npm
 npm-debug.log
+favicon-markup.json

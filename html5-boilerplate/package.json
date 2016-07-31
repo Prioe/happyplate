@@ -1,0 +1,116 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "https://github.com/h5bp/html5-boilerplate.git",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "https://github.com/h5bp/html5-boilerplate.git",
+        "spec": "git+https://github.com/h5bp/html5-boilerplate.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:h5bp/html5-boilerplate.git",
+          "sshUrl": "git+ssh://git@github.com/h5bp/html5-boilerplate.git",
+          "httpsUrl": "git+https://github.com/h5bp/html5-boilerplate.git",
+          "gitUrl": "git://github.com/h5bp/html5-boilerplate.git",
+          "shortcut": "github:h5bp/html5-boilerplate",
+          "directUrl": "https://raw.githubusercontent.com/h5bp/html5-boilerplate/master/package.json"
+        }
+      },
+      "C:\\Users\\micha\\git\\gulp-h5-hapi-boilerplate"
+    ]
+  ],
+  "_from": "git+https://github.com/h5bp/html5-boilerplate.git",
+  "_id": "html5-boilerplate@5.3.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/html5-boilerplate",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "https://github.com/h5bp/html5-boilerplate.git",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "https://github.com/h5bp/html5-boilerplate.git",
+    "spec": "git+https://github.com/h5bp/html5-boilerplate.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:h5bp/html5-boilerplate.git",
+      "sshUrl": "git+ssh://git@github.com/h5bp/html5-boilerplate.git",
+      "httpsUrl": "git+https://github.com/h5bp/html5-boilerplate.git",
+      "gitUrl": "git://github.com/h5bp/html5-boilerplate.git",
+      "shortcut": "github:h5bp/html5-boilerplate",
+      "directUrl": "https://raw.githubusercontent.com/h5bp/html5-boilerplate/master/package.json"
+    }
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/h5bp/html5-boilerplate.git#b5d6e7b1613fca24d250fa8e5bc7bcc3dd6002ef",
+  "_shasum": "2e39a68594fd9bdb4a113d25f722023cc0a9c7a4",
+  "_shrinkwrap": null,
+  "_spec": "https://github.com/h5bp/html5-boilerplate.git",
+  "_where": "C:\\Users\\micha\\git\\gulp-h5-hapi-boilerplate",
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "dependencies": {},
+  "description": "[![Build Status](https://travis-ci.org/h5bp/html5-boilerplate.svg)](https://travis-ci.org/h5bp/html5-boilerplate) [![devDependency Status](https://david-dm.org/h5bp/html5-boilerplate/dev-status.svg)](https://david-dm.org/h5bp/html5-boilerplate#info=devDependencies)",
+  "devDependencies": {
+    "@alrra/travis-scripts": "^2.1.0",
+    "apache-server-configs": "2.14.0",
+    "archiver": "^0.21.0",
+    "babel-core": "^6.7.2",
+    "babel-preset-es2015": "^6.6.0",
+    "del": "^2.0.2",
+    "glob": "^7.0.3",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.0.2",
+    "gulp-header": "^1.2.2",
+    "gulp-jscs": "^3.0.1",
+    "gulp-jshint": "^2.0.0",
+    "gulp-load-plugins": "^1.1.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-replace": "^0.5.3",
+    "jquery": "1.12.2",
+    "jshint": "^2.8.0",
+    "jshint-stylish": "^2.0.1",
+    "mocha": "^2.2.4",
+    "normalize.css": "3.0.3",
+    "run-sequence": "^1.0.2",
+    "travis-after-all": "^1.4.4"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "gitHead": "b5d6e7b1613fca24d250fa8e5bc7bcc3dd6002ef",
+  "h5bp-configs": {
+    "directories": {
+      "archive": "archive",
+      "dist": "dist",
+      "src": "src",
+      "test": "test"
+    }
+  },
+  "homepage": "https://html5boilerplate.com/",
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/h5bp/html5-boilerplate/blob/master/LICENSE.txt"
+  },
+  "name": "html5-boilerplate",
+  "optionalDependencies": {},
+  "private": true,
+  "readme": "# [HTML5 Boilerplate](https://html5boilerplate.com)\n\n[![Build Status](https://travis-ci.org/h5bp/html5-boilerplate.svg)](https://travis-ci.org/h5bp/html5-boilerplate)\n[![devDependency Status](https://david-dm.org/h5bp/html5-boilerplate/dev-status.svg)](https://david-dm.org/h5bp/html5-boilerplate#info=devDependencies)\n\nHTML5 Boilerplate is a professional front-end template for building\nfast, robust, and adaptable web apps or sites.\n\nThis project is the product of many years of iterative development and\ncombined community knowledge. It does not impose a specific development\nphilosophy or framework, so you're free to architect your code in the\nway that you want.\n\n* Homepage: [https://html5boilerplate.com](https://html5boilerplate.com)\n* Source: [https://github.com/h5bp/html5-boilerplate](https://github.com/h5bp/html5-boilerplate)\n* Twitter: [@h5bp](https://twitter.com/h5bp)\n\n\n## Quick start\n\nChoose one of the following options:\n\n1. Download the latest stable release from\n   [html5boilerplate.com](https://html5boilerplate.com/) or create a\n   custom build using [Initializr](http://www.initializr.com).\n2. Clone the git repo — `git clone\n   https://github.com/h5bp/html5-boilerplate.git` - and checkout the\n   [tagged release](https://github.com/h5bp/html5-boilerplate/releases)\n   you'd like to use.\n\n\n## Features\n\n* HTML5 ready. Use the new elements with confidence.\n* Designed with progressive enhancement in mind.\n* Includes:\n  * [`Normalize.css`](https://necolas.github.com/normalize.css/)\n    for CSS normalizations and common bug fixes\n  * [`jQuery`](https://jquery.com/) via CDN, with a local fallback\n  * A custom build of  [`Modernizr`](https://modernizr.com/) for feature\n    detection\n  * [`Apache Server Configs`](https://github.com/h5bp/server-configs-apache)\n    that, among other, improve the web site's performance and security\n* Placeholder CSS Media Queries.\n* Useful CSS helper classes.\n* Default print styles, performance optimized.\n* An optimized version of the Google Universal Analytics snippet.\n* Protection against any stray `console` statements causing JavaScript\n  errors in older browsers.\n* \"Delete-key friendly.\" Easy to strip out parts you don't need.\n* Extensive inline and accompanying documentation.\n\n\n## Browser support\n\n* Chrome *(latest 2)*\n* Edge *(latest 2)*\n* Firefox *(latest 2)*\n* Internet Explorer 8+\n* Opera *(latest 2)*\n* Safari *(latest 2)*\n\n*This doesn't mean that HTML5 Boilerplate cannot be used in older browsers,\njust that we'll ensure compatibility with the ones mentioned above.*\n\nIf you need legacy browser support (IE 6+, Firefox 3.6+, Safari 4+) you\ncan use [HTML5 Boilerplate v4](https://github.com/h5bp/html5-boilerplate/tree/v4),\nbut is no longer actively developed.\n\n\n## Documentation\n\nTake a look at the [documentation table of contents](dist/doc/TOC.md).\nThis documentation is bundled with the project, which makes it readily\navailable for offline reading and provides a useful starting point for\nany documentation you want to write about your project.\n\n\n## Contributing\n\nHundreds of developers have helped make the HTML5 Boilerplate what it is\ntoday. Anyone and everyone is welcome to [contribute](CONTRIBUTING.md),\nhowever, if you decide to get involved, please take a moment to review\nthe [guidelines](CONTRIBUTING.md):\n\n* [Bug reports](CONTRIBUTING.md#bugs)\n* [Feature requests](CONTRIBUTING.md#features)\n* [Pull requests](CONTRIBUTING.md#pull-requests)\n\n\n## License\n\nThe code is available under the [MIT license](LICENSE.txt).\n",
+  "readmeFilename": "README.md",
+  "scripts": {
+    "build": "gulp build",
+    "test": "gulp archive && mocha --reporter spec --timeout 5000"
+  },
+  "version": "5.3.0"
+}

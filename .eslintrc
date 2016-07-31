@@ -141,7 +141,7 @@
     "no-path-concat": 1,
     "no-process-exit": 1,
     "no-restricted-modules": [1, ""], // add any unwanted Node.js core modules
-    "no-sync": 1,
+    "no-sync": 0,
 
     /* Stylistic Issues */
     "array-bracket-spacing": [1, "never"],
@@ -207,7 +207,7 @@
     "max-params": 0,
     "max-statements": 0,
     "no-bitwise": 1,
-    "no-plusplus": 1,
+    "no-plusplus": [1, { "allowForLoopAfterthoughts": true }],
 
     /* Babel */
     "babel/object-shorthand": [1, "always"],

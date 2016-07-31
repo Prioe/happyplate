@@ -1,8 +1,11 @@
 import eslint from 'gulp-eslint';
 
 export default function(gulp) {
+
+  const paths = gulp.config.get('paths.eslint');
+
   gulp.task('lint', () => {
-    return gulp.src(gulp.config.paths.eslint.files)
+    return gulp.src(paths.source)
       .pipe(eslint())
       .pipe(eslint.format('stylish'))
       .pipe(eslint.failAfterError());
