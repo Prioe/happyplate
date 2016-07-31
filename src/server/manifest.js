@@ -21,23 +21,49 @@ const manifest = {
     port: config.get('/port/web'),
     labels: ['web']
   }],
-  registrations: [
-    {
-      plugin: 'vision'
-    },
-    {
-      plugin: {
-        register: 'visionary',
-        options: {
-          engines: { jade: 'jade' },
-          path: './views'
+  registrations: [{
+    plugin: 'inert'
+  }, {
+    plugin: 'vision'
+  }, {
+    plugin: {
+      register: 'visionary',
+      options: {
+        engines: {
+          jade: 'jade'
+        },
+        path: './views'
+      }
+    }
+  }, {
+    plugin: {
+      register: 'good',
+      options: {
+        ops: {
+          interval: 1000
+        },
+        reporters: {
+          console: [{
+            module: 'good-squeeze',
+            name: 'Squeeze',
+            args: [{
+              log: '*',
+              response: '*'
+            }]
+          }, {
+            module: 'good-console',
+            args: [{
+              format: 'MM.DD.YY HH:mm:ss.SSS'
+            }]
+          }, 'stdout']
         }
       }
-    },
-    {
-      plugin: './routes/index'
     }
-  ]
+  }, {
+    plugin: './routes/index'
+  }, {
+    plugin: './routes/static'
+  }]
 };
 
 const store = new confidence.Store(manifest);

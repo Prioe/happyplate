@@ -65,7 +65,8 @@ export default function(gulp) {
       cleanCSS(),
       rename({ basename: gulp.config.get('concatenadedFileName'), suffix: '.min' }),
       sourcemaps.write('.'),
-      gulp.dest(paths.styles.target)
+      gulp.dest(paths.styles.target),
+      gulp.browserSync.stream()
     ], done);
   });
 
@@ -82,7 +83,7 @@ export default function(gulp) {
         developerName: pkg.author.name,
         developerURL: pkg.author.url,
         background: '#020307',
-        path: 'favicons/',
+        path: '/favicons/',
         url: pkg.url,
         display: 'standalone',
         orientation: 'portrait',

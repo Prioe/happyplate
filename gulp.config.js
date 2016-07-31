@@ -7,7 +7,8 @@ import dedent from 'dedent';
 const paths = {
   mocha: {
     root: 'test',
-    tests: 'test/*.js'
+    tests: 'test/*.js',
+    coverage: ['src/assets/scripts/**/*.js', 'src/server/**/*.js']
   },
   tasks: [
     'gulp/tasks'
@@ -28,6 +29,7 @@ const paths = {
       target: 'dist/public/js'
     },
     styles: {
+      watchable: 'src/assets/styles/**/*.scss',
       source: 'src/assets/styles/main.scss',
       target: 'dist/public/css'
     },
@@ -48,7 +50,7 @@ const paths = {
     },
     favicon: {
       source: 'src/assets/img/favicon.jpg',
-      target: 'dist/public'
+      target: 'dist/public/favicons'
     }
   },
   dependencies: {
@@ -72,7 +74,7 @@ const config = {
       proxy: 'localhost:8000'
     }
   },
-  concatenadedFileName: 'gh5hbp',
+  concatenadedFileName: 'all',
   headers: {
     full: dedent `
       /*!
