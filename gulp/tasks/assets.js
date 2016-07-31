@@ -86,10 +86,10 @@ export default function(gulp) {
         url: pkg.url,
         display: 'standalone',
         orientation: 'portrait',
-        version: 0.13,
+        version: pkg.version,
         logging: true,
-        online: true,
-        html: 'index.html',
+        online: false,
+        html: 'favicons.html',
         pipeHTML: true,
         replace: true
       }),
