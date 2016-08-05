@@ -5,7 +5,7 @@ export const register = (server, options, next) => {
     path: '/{param*}',
     handler: {
       directory: {
-        path: 'public'
+        path: options.path
       }
     }
   });

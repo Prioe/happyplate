@@ -65,7 +65,12 @@ const manifest = {
   }, {
     plugin: './routes/index'
   }, {
-    plugin: './routes/static'
+    plugin: {
+      register: './routes/static',
+      options: {
+        path: './public'
+      }
+    }
   }]
 };
 
