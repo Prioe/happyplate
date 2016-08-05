@@ -50,6 +50,7 @@ const manifest = {
             module: 'good-squeeze',
             name: 'Squeeze',
             args: [{
+              error: '*',
               log: '*',
               response: '*'
             }]
