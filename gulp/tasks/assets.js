@@ -10,6 +10,7 @@ import uglify from 'gulp-uglify';
 import header from 'gulp-header';
 import filter from 'gulp-filter';
 import html2jade from 'gulp-html2jade';
+import inject from 'gulp-inject';
 import pump from 'pump';
 import { use } from 'run-sequence';
 import favicons from 'gulp-favicons';
@@ -17,12 +18,13 @@ import favicons from 'gulp-favicons';
 export default function(gulp) {
 
   const paths = gulp.config.get('paths.assets');
-  const pkg = gulp.config.get('package');
   const runSequence = use(gulp);
 
-  gulp.task('assets:jade', () => {
-    return gulp.src(paths.jade.source)
-      .pipe(gulp.dest(paths.jade.target));
+  gulp.task('assets:jade', done => {
+    pump([
+      gulp.src(paths.jade.source),
+      gulp.dest(paths.jade.target)
+    ], done);
   });
 
   gulp.task('assets:static', () => {
@@ -46,13 +48,13 @@ export default function(gulp) {
 
   gulp.task('assets:modernizr', done => {
     pump([
-      gulp.src(paths.scripts.source),
-      modernizr(),
+      gulp.src(paths.modernizr.source),
+      modernizr(gulp.config.get('modernizrOptions')),
       sourcemaps.init(),
       uglify(),
       rename({ suffix: '.min' }),
       sourcemaps.write('.'),
-      gulp.dest(paths.scripts.target)
+      gulp.dest(paths.modernizr.target)
     ], done);
   });
 
@@ -75,36 +77,26 @@ export default function(gulp) {
     const htmlFilter = filter('*.html');
     const iconsFilter = filter(['*', '!*.html'], { restore: true });
 
-    pump([
+    const source = pump([
       gulp.src(paths.favicon.source),
-      favicons({
-        appName: pkg.name,
-        appDescription: pkg.description,
-        developerName: pkg.author.name,
-        developerURL: pkg.author.url,
-        background: '#020307',
-        path: '/favicons/',
-        url: pkg.url,
-        display: 'standalone',
-        orientation: 'portrait',
-        version: pkg.version,
-        logging: true,
-        online: false,
-        html: 'favicons.html',
-        pipeHTML: true,
-        replace: true
-      }),
+      favicons(gulp.config.get('faviconsOptions')),
       iconsFilter,
       gulp.dest(paths.favicon.target),
       iconsFilter.restore,
       htmlFilter,
       html2jade({ bodyless: true }),
       gulp.dest(paths.server.includes.target)
+    ]);
+
+    pump([
+      gulp.src(paths.favicon.inject.target),
+      inject(source, { relative: false, ignorePath: 'dist', addPrefix: '..', addRootSlash: false, name: 'favicon' }),
+      gulp.dest(paths.jade.target)
     ], done);
   });
 
   gulp.task('assets', done => runSequence([
-    'assets:jade',
+    gulp.config.get('env') !== 'production' ? 'assets:jade' : 'assets:favicon',
     'assets:static',
     'assets:scripts',
     'assets:modernizr',

@@ -3,6 +3,7 @@ import {
 } from 'path';
 import _ from 'lodash';
 import dedent from 'dedent';
+import * as pkg from './package';
 
 const paths = {
   mocha: {
@@ -25,7 +26,7 @@ const paths = {
   },
   assets: {
     scripts: {
-      source: 'src/assets/scripts/**/*',
+      source: 'src/assets/scripts/**/*.js',
       target: 'dist/public/js'
     },
     styles: {
@@ -38,7 +39,7 @@ const paths = {
       target: 'dist/public'
     },
     jade: {
-      source: 'src/assets/jade/**/*',
+      source: 'src/assets/jade/**/*.jade',
       target: 'dist'
     },
     server: {
@@ -49,8 +50,15 @@ const paths = {
       }
     },
     favicon: {
-      source: 'src/assets/img/favicon.jpg',
-      target: 'dist/public/favicons'
+      source: ['src/assets/img/favicon.png'],
+      target: 'dist/public/favicons',
+      inject: {
+        target: ['src/assets/jade/**/*.jade']
+      }
+    },
+    modernizr: {
+      source: ['src/assets/scripts/**/*.js', 'src/assets/styles/**/*.scss'],
+      target: 'dist/public/js'
     }
   },
   dependencies: {
@@ -85,7 +93,25 @@ const config = {
       */
     `,
     short: '/*! <%= pkg.name %> v<%= pkg.version %> | <%= pkg.license %> License | <%= pkg.homepage %> */'
-  }
+  },
+  faviconsOptions: {
+    appName: pkg.name,
+    appDescription: pkg.description,
+    developerName: pkg.author.name,
+    developerURL: pkg.author.url,
+    background: '#020307',
+    path: '/favicons/',
+    url: pkg.url,
+    display: 'standalone',
+    orientation: 'portrait',
+    version: pkg.version,
+    logging: true,
+    online: false,
+    html: 'favicons.html',
+    pipeHTML: true,
+    replace: true
+  },
+  modernizrOptions: {}
 };
 
 {
@@ -93,7 +119,8 @@ const config = {
     deepMapValues
   } = _.mixin(require('lodash-deep'));
   config.paths = deepMapValues(paths, (value) => join(__dirname, value));
-  config.package = require('./package');
+  config.package = pkg;
+  config.env = process.env.NODE_ENV ? process.env.NODE_ENV.trim() : '';
 }
 
 export const get = (...keys) => {
