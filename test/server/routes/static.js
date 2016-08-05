@@ -1,36 +1,34 @@
 import * as config from '../../../src/server/config';
 import manifest from '../../../src/server/manifest';
 import hapi from 'hapi';
-import vision from 'vision';
-import visionary from 'visionary';
+import inert from 'inert';
 import chai from 'chai';
 import { join } from 'path';
 
 chai.should();
-const homePlugin = require('../../../src/server/routes/index');
+const staticRoute = require('../../../src/server/routes/static');
 
-const visionaryPlugin = {
-  register: visionary,
+const staticPlugin = {
+  register: staticRoute,
   options: manifest.get('/registrations').filter((reg) => {
     if (reg.plugin &&
       reg.plugin.register &&
-      reg.plugin.register === 'visionary') {
+      reg.plugin.register === './routes/static') {
       return true;
     }
     return false;
   }).map((reg) => {
-    reg.plugin.options.path = join(__dirname, '../../../dist/views');
+    reg.plugin.options.path = join(__dirname, '../../../dist/public');
     return reg;
   })[0].plugin.options
 };
 
-let request;
 let server;
 
 describe('Routes', () => {
 
   beforeEach(done => {
-    const plugins = [vision, visionaryPlugin, homePlugin];
+    const plugins = [inert, staticPlugin];
     server = new hapi.Server();
     server.connection({ port: config.get('/port/web') });
     server.register(plugins, (err) => {
@@ -42,19 +40,27 @@ describe('Routes', () => {
     });
   });
 
-  describe('Home Page View', () => {
+  describe('Static Assets', () => {
 
-    beforeEach(done => {
-      request = {
+    it('should respond with humans.txt', done => {
+      const request = {
         method: 'GET',
-        url: '/'
+        url: '/humans.txt'
       };
-      done();
+      server.inject(request, (response) => {
+        response.result.should.match(/# humanstxt.org\//i);
+        response.statusCode.should.equal(200);
+        done();
+      });
     });
 
-    it('should render the home page properly', done => {
+    it('should respond with robots.txt', done => {
+      const request = {
+        method: 'GET',
+        url: '/robots.txt'
+      };
       server.inject(request, (response) => {
-        response.result.should.match(/Hidden message for testing! @index ~/i);
+        response.result.should.match(/# www.robotstxt.org\//i);
         response.statusCode.should.equal(200);
         done();
       });
