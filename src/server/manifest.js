@@ -8,9 +8,6 @@ const criteria = {
 const manifest = {
   $meta: 'This file defines the plot device.',
   server: {
-    debug: {
-      request: ['error']
-    },
     connections: {
       routes: {
         security: true
@@ -34,7 +31,7 @@ const manifest = {
         },
         path: './views',
         context: {
-          env: process.env.NODE_ENV
+          env: process.env.NODE_ENV || 'none'
         }
       }
     }
@@ -63,6 +60,8 @@ const manifest = {
         }
       }
     }
+  }, {
+    plugin: 'hapi-error'
   }, {
     plugin: './routes/index'
   }, {

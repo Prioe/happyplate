@@ -7,7 +7,6 @@ import { Instrumenter } from 'isparta';
 export default function(gulp) {
 
   const paths = gulp.config.get('paths.mocha');
-  process.env.NODE_ENV = 'testing';
 
   gulp.task('pre-test', ['assets'], done => {
     pump([

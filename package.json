@@ -63,6 +63,7 @@
     "good-console": "^6.1.2",
     "good-squeeze": "^4.0.0",
     "hapi": "^13.5.0",
+    "hapi-error": "^1.0.4",
     "inert": "^4.0.1",
     "vision": "^4.1.0",
     "visionary": "^6.0.0"
