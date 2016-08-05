@@ -30,6 +30,9 @@
     "es6": true,
     "mocha": true
   },
+  "globals": {
+    "Modernizr": true
+  },
   "parser": "babel-eslint",
   "plugins": [
     "babel"

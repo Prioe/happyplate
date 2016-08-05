@@ -1,8 +1,11 @@
 doctype html
 html.no-js(lang='')
 
+  - var mocha = 'none';
+  - var pageClass = 'default';
+  - var title = 'no title ◕ ︵ ◕';
+
   block variables
-    - var mocha = 'none';
 
   head
     block head
@@ -10,13 +13,13 @@ html.no-js(lang='')
     //- favicon:jade
     //- endinject
 
-  body
+  body(class="#{pageClass}")
     //if lt IE 8
       p.browserupgrade
         | You are using an
-        strong outdated
+        strong  outdated
         |  browser. Please
-        a(href='http://browsehappy.com/') upgrade your browser
+        a(href='https://whatbrowser.org/')  upgrade your browser
         |  to improve your experience.
 
 
@@ -24,10 +27,10 @@ html.no-js(lang='')
       block content
         p Theres nothing here yet. :(
 
+      if env.trim() != 'production'
+        a.coverage(href="/coverage/lcov-report/") Coverage Report >>
+
     include ../includes/scripts.jade
 
     if env.trim() == 'testing'
       include ../includes/mocha.jade
-
-    if env.trim() != 'production'
-      a(href="/coverage/lcov-report/") Coverage Report
