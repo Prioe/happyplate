@@ -27,9 +27,11 @@ export default function(gulp) {
     ], done);
   });
 
-  gulp.task('assets:static', () => {
-    return gulp.src(paths.static.source)
-      .pipe(gulp.dest(paths.static.target));
+  gulp.task('assets:static', done => {
+    pump([
+      gulp.src(paths.static.source),
+      gulp.dest(paths.static.target)
+    ], done);
   });
 
   gulp.task('assets:scripts', done => {

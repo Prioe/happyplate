@@ -1,6 +1,7 @@
 import { spawn } from '../lib/util';
 import { use } from 'run-sequence';
 import babel from 'gulp-babel';
+import pump from 'pump';
 
 export default function(gulp) {
 
@@ -9,10 +10,12 @@ export default function(gulp) {
 
   let serverProcess;
 
-  gulp.task('server:build', ['lint'], () => {
-    return gulp.src(paths.assets.server.source)
-      .pipe(babel())
-      .pipe(gulp.dest(paths.assets.server.target));
+  gulp.task('server:build', ['lint'], done => {
+    pump([
+      gulp.src(paths.assets.server.source),
+      babel(),
+      gulp.dest(paths.assets.server.target)
+    ], done);
   });
 
   gulp.task('server:start', () => {

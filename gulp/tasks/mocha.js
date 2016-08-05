@@ -1,5 +1,7 @@
 import mocha from 'gulp-mocha';
 import istanbul from 'gulp-istanbul';
+import env from 'gulp-env';
+import pump from 'pump';
 import { Instrumenter } from 'isparta';
 
 export default function(gulp) {
@@ -7,27 +9,28 @@ export default function(gulp) {
   const paths = gulp.config.get('paths.mocha');
   process.env.NODE_ENV = 'testing';
 
-  gulp.task('pre-test', ['assets', 'server:build'], () => {
-    return gulp.src(paths.coverage)
-      // Covering files
-      .pipe(istanbul({
+  gulp.task('pre-test', ['assets'], done => {
+    pump([
+      gulp.src(paths.coverage),
+      istanbul({
         // supports es6
         instrumenter: Instrumenter
-      }))
-      // Force `require` to return covered files
-      .pipe(istanbul.hookRequire());
+      }),
+      istanbul.hookRequire()
+    ], done);
   });
 
-  gulp.task('mocha', ['pre-test'], () => {
-    return gulp.src(paths.tests, {
-      read: false
-    })
-      // gulp-mocha needs filepaths so you can't have any plugins before it
-    .pipe(mocha({
-      reporter: 'spec'
-    }))
-    .pipe(istanbul.writeReports({
-      dir: './dist/public/coverage'
-    }));
+  gulp.task('mocha', ['pre-test'], done => {
+
+    const envs = env.set({ NODE_ENV: 'testing' });
+
+    pump([
+      envs,
+      gulp.src(paths.tests, { read: false }),
+      mocha({ reporter: 'spec' }),
+      istanbul.writeReports({ dir: './dist/public/coverage' }),
+      envs.reset
+    ], done);
+
   });
 }
