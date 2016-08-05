@@ -1,4 +1,7 @@
 extends ../layouts/base
 
+block variables
+  - var mocha = 'index';
+
 block content
-  p Lets get some content rolling! ~
+  p #{env}

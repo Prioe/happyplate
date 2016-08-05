@@ -32,7 +32,10 @@ const manifest = {
         engines: {
           jade: 'jade'
         },
-        path: './views'
+        path: './views',
+        context: {
+          env: process.env.NODE_ENV
+        }
       }
     }
   }, {

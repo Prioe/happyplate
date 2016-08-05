@@ -7,8 +7,8 @@ import dedent from 'dedent';
 const paths = {
   mocha: {
     root: 'test',
-    tests: 'test/*.js',
-    coverage: ['src/assets/scripts/**/*.js', 'src/server/**/*.js']
+    tests: 'test/**/*.js',
+    coverage: ['src/server/**/*.js']
   },
   tasks: [
     'gulp/tasks'

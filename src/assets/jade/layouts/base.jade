@@ -1,0 +1,31 @@
+doctype html
+html.no-js(lang='')
+
+  block variables
+    - var mocha = 'none';
+
+  head
+    include ../includes/head.jade
+    include ../includes/favicons.jade
+
+  body
+    //if lt IE 8
+      p.browserupgrade
+        | You are using an
+        strong outdated
+        |  browser. Please
+        a(href='http://browsehappy.com/') upgrade your browser
+        |  to improve your experience.
+
+
+    main
+      block content
+        p Theres nothing here yet. :(
+
+    include ../includes/scripts.jade
+
+    if env.trim() == 'testing'
+      include ../includes/mocha.jade
+
+    if env.trim() != 'production'
+      a(href="/coverage/lcov-report/") Coverage Report

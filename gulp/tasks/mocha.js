@@ -5,9 +5,9 @@ import { Instrumenter } from 'isparta';
 export default function(gulp) {
 
   const paths = gulp.config.get('paths.mocha');
-  console.log(paths.coverage);
+  process.env.NODE_ENV = 'testing';
 
-  gulp.task('pre-test', () => {
+  gulp.task('pre-test', ['assets', 'server:build'], () => {
     return gulp.src(paths.coverage)
       // Covering files
       .pipe(istanbul({
@@ -26,6 +26,8 @@ export default function(gulp) {
     .pipe(mocha({
       reporter: 'spec'
     }))
-    .pipe(istanbul.writeReports());
+    .pipe(istanbul.writeReports({
+      dir: './dist/public/coverage'
+    }));
   });
 }
