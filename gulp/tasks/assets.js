@@ -15,6 +15,8 @@ import pump from 'pump';
 import { use } from 'run-sequence';
 import favicons from 'gulp-favicons';
 
+import print from 'gulp-print';
+
 export default function(gulp) {
 
   const paths = gulp.config.get('paths.assets');
@@ -51,6 +53,7 @@ export default function(gulp) {
   gulp.task('assets:modernizr', done => {
     pump([
       gulp.src(paths.modernizr.source),
+      print(),
       modernizr(gulp.config.get('modernizrOptions')),
       sourcemaps.init(),
       uglify(),
