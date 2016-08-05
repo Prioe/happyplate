@@ -1,0 +1,41 @@
+.home {
+
+  transition: background-color 5s ease;
+  background-color: $primary-color-light;
+  color: $secondary-color;
+
+  &:hover {
+    background-color: $primary-color;
+  }
+
+  &__content {
+    text-align: center;
+    h1 {
+      font-size: 5rem;
+      text-shadow: 2px 2px $dark-color;
+    }
+
+    h2 {
+      font-size: 3rem;
+      text-shadow: 2px 2px $dark-color;
+    }
+  }
+
+  a {
+    color: $dark-color;
+    text-decoration: none;
+
+    &:visited {
+      color: $dark-color;
+    }
+  }
+
+  .coverage {
+    font-size: 1.3rem;
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+  }
+
+}

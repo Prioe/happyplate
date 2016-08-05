@@ -1,0 +1,26 @@
+.error {
+
+  font-family: Helvetica, sans-serif;
+  text-align: center;
+  background: #f1c40f;
+  transition: background 500ms ease;
+  color: #424545;
+
+  &__content {
+    h1 {
+      font-size: 10em;
+    }
+    h2 {
+      top: 10%;
+    }
+    h2.emoji {
+      font-size: 4em;
+    }
+  }
+
+  &:hover, &:active {
+    background: #2ecc71;
+    transition: background 3s ease-in;
+  }
+
+}
