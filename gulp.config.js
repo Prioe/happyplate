@@ -57,14 +57,18 @@ const paths = {
       }
     },
     modernizr: {
-      source: ['src/assets/scripts/**/*.js', 'src/assets/styles/**/*.scss'],
+      source: ['src/assets/**/*.@(js|?(s)css|jade)'],
       target: 'dist/public/js'
     }
   },
   dependencies: {
     normalize: {
       source: 'node_modules/normalize.css/normalize.css',
-      target: 'dist/vendor/normalize'
+      target: 'dist/public/vendor/normalize'
+    },
+    remUnitPolyfill: {
+      source: '/node_modules/rem-unit-polyfill/js/rem.js',
+      target: 'dist/public/vendor/rem-unit-polyfill'
     }
   },
   server: {
