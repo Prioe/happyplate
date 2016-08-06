@@ -15,8 +15,6 @@ import pump from 'pump';
 import { use } from 'run-sequence';
 import favicons from 'gulp-favicons';
 
-import print from 'gulp-print';
-
 export default function(gulp) {
 
   const paths = gulp.config.get('paths.assets');
@@ -37,9 +35,15 @@ export default function(gulp) {
   });
 
   gulp.task('assets:scripts', done => {
+
+    const concatFilter = filter(['**/*', '!**/polyfills.js'], { restore: true });
+
     pump([
       gulp.src(paths.scripts.source),
+      concatFilter,
+      print(),
       concat(`${gulp.config.get('concatenadedFileName')}.js`),
+      concatFilter.restore,
       babel(),
       sourcemaps.init(),
       uglify(),
@@ -53,7 +57,6 @@ export default function(gulp) {
   gulp.task('assets:modernizr', done => {
     pump([
       gulp.src(paths.modernizr.source),
-      print(),
       modernizr(gulp.config.get('modernizrOptions')),
       sourcemaps.init(),
       uglify(),
