@@ -2,6 +2,8 @@ import cleanCSS from 'gulp-clean-css';
 import uglify from 'gulp-uglify';
 import rename from 'gulp-rename';
 import sourcemaps from 'gulp-sourcemaps';
+import filter from 'gulp-filter';
+import insert from 'gulp-insert';
 import pump from 'pump';
 
 export default function(gulp) {
@@ -27,6 +29,17 @@ export default function(gulp) {
       rename({ suffix: '.min' }),
       sourcemaps.write('.'),
       gulp.dest(paths.remUnitPolyfill.target)
+    ], done);
+  });
+
+  gulp.task('dependencies:jquery', done => {
+    const jsFilter = filter('**/*.js', { restore: true });
+    pump([
+      gulp.src(paths.jquery.source),
+      jsFilter,
+      insert.append('/*# sourceMappingURL=jquery.min.map */'),
+      jsFilter.restore,
+      gulp.dest(paths.jquery.target)
     ], done);
   });
 }
