@@ -2,15 +2,39 @@
  * Table of Contents:
  *
  * 1. Colors
+ * 2. Typography
  *
  */
 
 /* 1. Colors */
 
-$primary-color: #ec484e;
-$primary-color-light: #f49564;
+$primary-color: #ec484e !default;
+$primary-color-light: #f49564 !default;
 
-$secondary-color: #417dd4;
-$secondary-color-light: #8fcef2;
+$secondary-color: #417dd4 !default;
+$secondary-color-light: #8fcef2 !default;
 
-$dark-color: #4c5678;
+$dark-color: #4c5678 !default;
+$off-black: #322929 !default;
+$off-white: #f7dacb !default;
+
+/* 2. Typography */
+
+$link-color: $secondary-color !default;
+$text-color: $off-black !default;
+$highlight-color: $secondary-color-light !default;
+$shadow-color: transparentize($dark-color, .3) !default;
+$hr-color: $secondary-color-light;
+
+$h1-fontsize: 4.2rem !default;
+$h2-fontsize: 3.56rem !default;
+$h3-fontsize: 2.92rem !default;
+$h4-fontsize: 2.28rem !default;
+$h5-fontsize: 1.64rem !default;
+$h6-fontsize: 1rem !default;
+
+/* 3. Button */
+$button-color: $dark-color;
+$button-contrast-color: $off-white;
+
+$footer-bg-color: $primary-color-light;

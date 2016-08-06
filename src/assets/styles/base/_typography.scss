@@ -1,0 +1,50 @@
+html {
+    color: $text-color;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+::selection {
+    background: $highlight-color;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid $hr-color;
+    margin: 1.5rem;
+}
+
+a {
+  text-decoration: none;
+  border-bottom: 0.05rem solid transparent;
+  transition: all .3s ease-in-out;
+  color: $link-color;
+
+  &:hover {
+    border-color: $link-color;
+  }
+
+  h1 &, h2 & { border-bottom: 0.3rem solid transparent; }
+  h3 & { border-bottom: 0.2rem solid transparent; }
+  h4 &, h5 & { border-bottom: 0.13rem solid transparent; }
+}
+
+h1 { text-shadow: 0.1rem 0.1rem $shadow-color; }
+h2, h3, h4, h5 { text-shadow: .05rem .05rem $shadow-color; }
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 400;
+	line-height: 1.1;
+}
+
+// Header Styles
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
+h1 { font-size: $h1-fontsize; line-height: 110%; margin: ($h1-fontsize / 2) 0 ($h1-fontsize / 2.5) 0;}
+h2 { font-size: $h2-fontsize; line-height: 110%; margin: ($h2-fontsize / 2) 0 ($h2-fontsize / 2.5) 0;}
+h3 { font-size: $h3-fontsize; line-height: 110%; margin: ($h3-fontsize / 2) 0 ($h3-fontsize / 2.5) 0;}
+h4 { font-size: $h4-fontsize; line-height: 110%; margin: ($h4-fontsize / 2) 0 ($h4-fontsize / 2.5) 0;}
+h5 { font-size: $h5-fontsize; line-height: 110%; margin: ($h5-fontsize / 2) 0 ($h5-fontsize / 2.5) 0;}
+h6 { font-size: $h6-fontsize; line-height: 110%; margin: ($h6-fontsize / 2) 0 ($h6-fontsize / 2.5) 0;}

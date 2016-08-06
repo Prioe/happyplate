@@ -2,10 +2,14 @@
   http://sass-guidelin.es/#the-7-1-pattern
 */
 
-@import "abstracts/mixins";
 @import "abstracts/variables";
 
+@import "base/base";
 @import "base/typography";
+
+@import "components/browserupgrade";
+@import "components/button";
+@import "components/footer";
 
 @import "pages/home";
 @import "pages/error";

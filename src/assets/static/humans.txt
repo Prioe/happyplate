@@ -3,7 +3,7 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    Michael Albertz -- Author -- http://www.prio.one/
 
 # THANKS
 
@@ -12,4 +12,4 @@
 # TECHNOLOGY COLOPHON
 
     CSS3, HTML5
-    Apache Server Configs, jQuery, Modernizr, Normalize.css
+    Hapi, Jade, SASS, jQuery, Modernizr, Normalize.css

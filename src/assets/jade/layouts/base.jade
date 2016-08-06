@@ -13,7 +13,7 @@ html.no-js(lang='')
     //- favicon:jade
     //- endinject
 
-  body(class="#{pageClass}")
+  body
     //if lt IE 8
       p.browserupgrade
         | You are using an
@@ -23,14 +23,16 @@ html.no-js(lang='')
         |  to improve your experience.
 
 
-    main
+    main(class="#{pageClass}")
       block content
         p Theres nothing here yet. :(
 
-      if env.trim() != 'production'
-        a.coverage(href="/coverage/lcov-report/") Coverage Report >>
+    footer.footer
+      .footer__content
+        a.github-button(href='https://github.com/prioe', data-style='mega', data-count-href='/prioe/followers', data-count-api='/users/prioe#followers', data-count-aria-label='# followers on GitHub', aria-label='Follow @prioe on GitHub') Follow @prioe
 
     include ../includes/scripts.jade
+    block scripts
 
     if env.trim() == 'testing'
       include ../includes/mocha.jade

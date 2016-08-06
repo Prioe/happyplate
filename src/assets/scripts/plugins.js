@@ -9,5 +9,3 @@
   const console = (window.console = window.console || {});
   methods.filter(method => !console[method]).map(method => { console[method] = () => {}; });
 }
-
-// Place any jQuery/helper plugins in here.

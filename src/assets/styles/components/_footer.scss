@@ -1,0 +1,14 @@
+.footer {
+  background-color: $footer-bg-color;
+  padding: 3rem 1rem;
+
+  > * {
+    margin: 0 auto;
+    max-width: 45rem;
+  }
+
+
+  &__content {
+    width: 100%;
+  }
+}

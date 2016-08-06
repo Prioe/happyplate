@@ -6,6 +6,18 @@ block variables
   - var pageClass = 'home';
 
 block content
-  .home__content
-    h1 Hello there!
-    h2 All done, now go nuts! ~
+  header.home__content
+    h1 Hello there
+    h2 Everything is done!
+    h3 Go nuts ~
+  section.home__api
+    h4 First, let's consume some api, shall we?
+    .home__api-controls
+      a#api-consumer-ping.btn Nom Nom Nom
+      a#api-consumer-index.btn Greetings ~
+      a#api-table-reset.btn Reset Responses ◕ ︵ ◕
+    #api-results.home__api-results
+
+  if env.trim() != 'production'
+    h6.coverage
+      a(href="/coverage/lcov-report/") Coverage Report >>
