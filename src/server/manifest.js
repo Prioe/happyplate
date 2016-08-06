@@ -71,6 +71,16 @@ const manifest = {
         path: './public'
       }
     }
+  }, {
+    plugin: './api/index',
+    options: {
+      routes: { prefix: '/api' }
+    }
+  }, {
+    plugin: './api/ping',
+    options: {
+      routes: { prefix: '/api' }
+    }
   }]
 };
 
