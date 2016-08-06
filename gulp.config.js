@@ -26,7 +26,7 @@ const paths = {
   },
   assets: {
     scripts: {
-      source: 'src/assets/scripts/**/*.js',
+      source: ['src/assets/scripts/**/*.js'],
       target: 'dist/public/js'
     },
     styles: {
@@ -69,6 +69,10 @@ const paths = {
     remUnitPolyfill: {
       source: '/node_modules/rem-unit-polyfill/js/rem.js',
       target: 'dist/public/vendor/rem-unit-polyfill'
+    },
+    jquery: {
+      source: ['/node_modules/jquery/dist/jquery.min.js', '/node_modules/jquery/dist/jquery.min.map'],
+      target: 'dist/public/vendor/jquery'
     }
   },
   server: {
@@ -115,7 +119,16 @@ const config = {
     pipeHTML: true,
     replace: true
   },
-  modernizrOptions: {}
+  modernizrOptions: {
+    options: [
+      'setClasses',
+      'addTest',
+      'html5printshiv',
+      'testProp',
+      'fnBind',
+      'testStyles'
+    ]
+  }
 };
 
 {
