@@ -1,10 +1,10 @@
 const jQueryNamespace = $ => {
-
   /* Our jQuery namespace */
-  $('#api-consumer-ping').on('click', event => {
 
+  const demoPingApi = () => {
     const $input = $('#api-consumer-input');
     const message = $input.val();
+
     if (message === '') {
       $input.addClass('required');
     }
@@ -26,7 +26,17 @@ const jQueryNamespace = $ => {
         }
       });
     }
+  };
+
+  $('#api-consumer-ping').on('click', event => {
+    demoPingApi();
     event.preventDefault();
+  });
+
+  $('#api-consumer-input').keyup(event => {
+    if (event.keyCode === 13) { // Enter
+      demoPingApi();
+    }
   });
 
   $('#api-table-reset').on('click', event => {
