@@ -19,15 +19,18 @@ gulp.task('browser-sync', () => {
   browserSync.init(gulp.config.get('browserSync.config'));
 });
 
-gulp.task('dev', done => runSequence(['assets', 'server:build'], ['server:start', 'browser-sync'], () => {
+gulp.task('dev', done => runSequence(
+  ['assets', 'dependencies', 'server:build'],
+  ['server:start', 'browser-sync'], () => {
 
-  const paths = gulp.config.get('paths.assets');
+    const paths = gulp.config.get('paths.assets');
 
-  gulp.watch(paths.server.source, () => runSequence('server:build', 'server:restart', browserSync.reload));
-  gulp.watch(paths.scripts.source, () => runSequence('assets:scripts', browserSync.reload));
-  gulp.watch(paths.styles.watchable, ['assets:styles']);
-  gulp.watch(paths.jade.source, () => runSequence('assets:jade', 'server:restart', browserSync.reload));
-  gulp.watch(paths.static.source, () => runSequence('assets:static', browserSync.reload));
-  done();
+    gulp.watch(paths.server.source, () => runSequence('server:build', 'server:restart', browserSync.reload));
+    gulp.watch(paths.scripts.source, () => runSequence('assets:scripts', browserSync.reload));
+    gulp.watch(paths.styles.watchable, ['assets:styles']);
+    gulp.watch(paths.jade.source, () => runSequence('assets:jade', 'server:restart', browserSync.reload));
+    gulp.watch(paths.static.source, () => runSequence('assets:static', browserSync.reload));
+    done();
 
-}));
+  })
+);

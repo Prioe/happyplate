@@ -5,9 +5,11 @@ import sourcemaps from 'gulp-sourcemaps';
 import filter from 'gulp-filter';
 import insert from 'gulp-insert';
 import pump from 'pump';
+import { use } from 'run-sequence';
 
 export default function(gulp) {
 
+  const runSequence = use(gulp);
   const paths = gulp.config.get('paths.dependencies');
 
   gulp.task('dependencies:normalize', done => {
@@ -42,4 +44,9 @@ export default function(gulp) {
       gulp.dest(paths.jquery.target)
     ], done);
   });
+
+  gulp.task('dependencies', done => runSequence([
+    'dependencies:normalize', 'dependencies:rem-unit-polyfill', 'dependencies:jquery'
+  ], done));
+
 }
