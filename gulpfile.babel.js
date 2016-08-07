@@ -9,7 +9,7 @@ const browserSync = BrowserSync.create();
 {
   gulp.config = config;
   gulp.browserSync = browserSync;
-  const loader = new TaskLoader(gulp, __dirname);
+  const loader = new TaskLoader(gulp);
   loader.loadDir(...gulp.config.get('paths.tasks'));
 }
 
