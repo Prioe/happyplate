@@ -1,6 +1,6 @@
 {
   "name": "gulp-h5-hapi-boilerplate",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "My gulp boilerplate using h5bp and hapi.",
   "main": "gulpfile.babel.js",
   "scripts": {
