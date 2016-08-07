@@ -14,7 +14,7 @@
   }
 
   .csstransitions & {
-    transition: background-color 5s ease;
+    transition: background-color 10s ease;
   }
 
   .no-csstransitions & {
@@ -46,7 +46,7 @@
 
     &-response {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       border: 1px solid $off-black;
       border-radius: 1rem;
       margin: .3rem;

@@ -1,0 +1,28 @@
+.input-field {
+  display: flex;
+  flex-flow: column;
+
+  input[type="text"] {
+    border: 0;
+    background-color: transparent;
+    border-bottom: .15rem solid transparentize($input-color, .5);
+    padding: .3rem 0;
+    transition: all .5s ease;
+
+    &::-webkit-input-placeholder {
+      color: $input-color;
+      font-size: .8rem;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $input-color;
+    }
+
+    &.required {
+      border-color: $required-color;
+    }
+
+  }
+
+}

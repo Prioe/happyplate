@@ -3,13 +3,17 @@
  *
  * 1. Colors
  * 2. Typography
+ * 3. Button
+ * 4. Footer
+ * 5. Forms
  *
  */
 
 /* 1. Colors */
 
-$primary-color: #ec484e !default;
-$primary-color-light: #f49564 !default;
+
+$primary-color: #f49564 !default;
+$primary-color-light: #ecbe48 !default;
 
 $secondary-color: #417dd4 !default;
 $secondary-color-light: #8fcef2 !default;
@@ -17,6 +21,8 @@ $secondary-color-light: #8fcef2 !default;
 $dark-color: #4c5678 !default;
 $off-black: #322929 !default;
 $off-white: #f7dacb !default;
+
+$error-color: #ec484e !default;
 
 /* 2. Typography */
 
@@ -37,4 +43,9 @@ $h6-fontsize: 1rem !default;
 $button-color: $dark-color;
 $button-contrast-color: $off-white;
 
+/* 5. Footer */
 $footer-bg-color: darken($primary-color-light, 3);
+
+/* 4. Forms */
+$input-color: $dark-color;
+$required-color: $error-color;
