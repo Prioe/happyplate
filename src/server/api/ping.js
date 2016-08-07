@@ -23,7 +23,7 @@ export const register = (server, options, next) => {
         lastIndex = matches.index + matches[0].length;
       }
       message.push(request.query.message.slice(lastIndex));
-      reply({ message: message.length === 0 ? request.query.message : message.join('') });
+      reply({ message: message.join('') });
     }
   });
 

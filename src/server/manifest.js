@@ -5,6 +5,8 @@ const criteria = {
   env: process.env.NODE_ENV
 };
 
+console.log(process.env.NODE_ENV);
+
 const manifest = {
   $meta: 'This file defines the plot device.',
   server: {
@@ -31,7 +33,7 @@ const manifest = {
         },
         path: './views',
         context: {
-          env: process.env.NODE_ENV || 'none'
+          env: (process.env.NODE_ENV + '')
         }
       }
     }
