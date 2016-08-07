@@ -13,7 +13,7 @@ export const register = (server, options, next) => {
       }
     },
     handler: (request, reply) => {
-      const regex = /(\s|^)ping(\s|$)/gi;
+      const regex = /\bping\b/gi;
       const message = [];
       let matches;
       let lastIndex = 0;
