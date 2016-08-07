@@ -25,9 +25,9 @@ const staticPlugin = {
 
 let server;
 
-describe('Routes', () => {
+describe('static', () => {
 
-  beforeEach(done => {
+  before(done => {
     const plugins = [inert, staticPlugin];
     server = new hapi.Server();
     server.connection({ port: config.get('/port/web') });
@@ -40,32 +40,28 @@ describe('Routes', () => {
     });
   });
 
-  describe('Static Assets', () => {
-
-    it('should respond with humans.txt', done => {
-      const request = {
-        method: 'GET',
-        url: '/humans.txt'
-      };
-      server.inject(request, (response) => {
-        response.result.should.match(/# humanstxt.org\//i);
-        response.statusCode.should.equal(200);
-        done();
-      });
+  it('should respond with humans.txt', done => {
+    const request = {
+      method: 'GET',
+      url: '/humans.txt'
+    };
+    server.inject(request, (response) => {
+      response.result.should.match(/# humanstxt.org\//i);
+      response.statusCode.should.equal(200);
+      done();
     });
+  });
 
-    it('should respond with robots.txt', done => {
-      const request = {
-        method: 'GET',
-        url: '/robots.txt'
-      };
-      server.inject(request, (response) => {
-        response.result.should.match(/# www.robotstxt.org\//i);
-        response.statusCode.should.equal(200);
-        done();
-      });
+  it('should respond with robots.txt', done => {
+    const request = {
+      method: 'GET',
+      url: '/robots.txt'
+    };
+    server.inject(request, (response) => {
+      response.result.should.match(/# www.robotstxt.org\//i);
+      response.statusCode.should.equal(200);
+      done();
     });
-
   });
 
 });

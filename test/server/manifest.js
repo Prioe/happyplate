@@ -3,7 +3,7 @@ import chai from 'chai';
 
 chai.should();
 
-describe('Manifest', () => {
+describe('manifest', () => {
   it('should get the manifest data', () => {
     manifest.get('/').should.be.a('object');
   });

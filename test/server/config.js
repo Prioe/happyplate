@@ -3,7 +3,7 @@ import chai from 'chai';
 
 chai.should();
 
-describe('Config', () => {
+describe('config', () => {
   it('should get the config data', () => {
     config.get('/').should.be.a('object');
   });

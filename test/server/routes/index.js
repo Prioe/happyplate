@@ -27,9 +27,9 @@ const visionaryPlugin = {
 let request;
 let server;
 
-describe('Routes', () => {
+describe('home', () => {
 
-  beforeEach(done => {
+  before(done => {
     const plugins = [vision, visionaryPlugin, homePlugin];
     server = new hapi.Server();
     server.connection({ port: config.get('/port/web') });
@@ -42,24 +42,20 @@ describe('Routes', () => {
     });
   });
 
-  describe('Home Page View', () => {
+  beforeEach(done => {
+    request = {
+      method: 'GET',
+      url: '/'
+    };
+    done();
+  });
 
-    beforeEach(done => {
-      request = {
-        method: 'GET',
-        url: '/'
-      };
+  it('should render the home page properly', done => {
+    server.inject(request, (response) => {
+      response.result.should.match(/Hidden message for testing! @index ~/i);
+      response.statusCode.should.equal(200);
       done();
     });
-
-    it('should render the home page properly', done => {
-      server.inject(request, (response) => {
-        response.result.should.match(/Hidden message for testing! @index ~/i);
-        response.statusCode.should.equal(200);
-        done();
-      });
-    });
-
   });
 
 });

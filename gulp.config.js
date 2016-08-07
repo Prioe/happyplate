@@ -8,7 +8,7 @@ import * as pkg from './package';
 const paths = {
   mocha: {
     root: 'test',
-    tests: 'test/**/*.js',
+    tests: 'test/entry.js',
     coverage: ['src/server/**/*.js']
   },
   tasks: [
