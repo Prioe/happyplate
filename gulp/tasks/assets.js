@@ -41,7 +41,6 @@ export default function(gulp) {
     pump([
       gulp.src(paths.scripts.source),
       concatFilter,
-      print(),
       concat(`${gulp.config.get('concatenadedFileName')}.js`),
       concatFilter.restore,
       babel(),
