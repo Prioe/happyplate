@@ -4,7 +4,9 @@
   "description": "My gulp boilerplate using h5bp and hapi.",
   "main": "gulpfile.babel.js",
   "scripts": {
-    "test": "gulp mocha"
+    "test": "gulp mocha",
+    "start": "gulp dev",
+    "build": "env NODE_ENV=production gulp build"
   },
   "repository": {
     "type": "git",
@@ -12,6 +14,7 @@
   },
   "keywords": [
     "gulp",
+    "hapi",
     "boilerplate",
     "babel",
     "mocha"
@@ -22,6 +25,7 @@
     "url": "https://www.prio.one/"
   },
   "license": "MIT",
+  "private": true,
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-eslint": "^6.1.2",

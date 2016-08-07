@@ -6,6 +6,9 @@ import dedent from 'dedent';
 import * as pkg from './package';
 
 const paths = {
+  root: {
+    dist: 'dist'
+  },
   mocha: {
     root: 'test',
     tests: 'test/entry.js',
