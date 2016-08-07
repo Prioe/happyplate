@@ -37,4 +37,4 @@ $h6-fontsize: 1rem !default;
 $button-color: $dark-color;
 $button-contrast-color: $off-white;
 
-$footer-bg-color: $primary-color-light;
+$footer-bg-color: darken($primary-color-light, 3);
