@@ -21,7 +21,7 @@ const jQueryNamespace = $ => {
       success: result => {
         const $response = $('<div></div>')
           .addClass('home__api-response')
-          .append(`<h4>${result.response}</h4>`);
+          .append(`<h5>${result.response}</h5>`);
         $('#api-results').append($response);
       }
     });
