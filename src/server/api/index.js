@@ -7,7 +7,7 @@ export const register = (server, options, next) => {
       const uri = request.connection.info.uri;
       reply({
         _links: {
-          ping: `${uri}/ping`
+          ping: `${uri}/api/ping`
         }
       });
     }
