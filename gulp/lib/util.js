@@ -6,8 +6,10 @@ const { PluginError, noop } = gutil;
 export function spawn(args) {
 
   const callback = args.callback || noop;
-  const niceCommand = args.command.split(/\./)[0];
-  const log = (msg, color) => gutil.log(`[${gutil.colors[color](niceCommand)}] ${msg}`);
+  const fmtCmd = args.command.split(/\./)[0];
+  const log = (msg, color) =>
+    gutil.log(`[${gutil.colors[color](fmtCmd)}] ${msg}`
+  );
   const proc = cp.spawn(args.command, args.args, args.opts);
 
   let error;
@@ -25,7 +27,10 @@ export function spawn(args) {
   proc.on('close', (code) => {
     if (code !== 0) {
       return callback(
-        new PluginError(niceCommand, `${niceCommand} ended with code ${code}${error ? ` (${error.code})` : ''}`)
+        new PluginError(
+          fmtCmd,
+          `${fmtCmd} ended with code ${code}${error ? ` (${error.code})` : ''}`
+        )
       );
     }
     return callback();

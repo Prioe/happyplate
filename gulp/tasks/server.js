@@ -35,5 +35,7 @@ export default function(gulp) {
     return void 0;
   });
 
-  gulp.task('server:restart', done => runSequence('server:kill', 'server:start', done));
+  gulp.task('server:restart', done =>
+    runSequence('server:kill', 'server:start', done)
+  );
 }

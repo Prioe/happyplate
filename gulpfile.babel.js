@@ -1,38 +1,73 @@
 import gulp from 'gulp';
 import BrowserSync from 'browser-sync';
-import * as config from './gulp.config';
 import TaskLoader from './gulp/lib/TaskLoader';
 import runSequence from 'run-sequence';
 import rimraf from 'rimraf';
+import { PluginError } from 'gulp-util';
 
 const browserSync = BrowserSync.create();
 
+let config;
+
 {
-  gulp.config = config;
+  gulp.config = require('./gulp.config');
   gulp.browserSync = browserSync;
   const loader = new TaskLoader(gulp);
-  loader.loadDir(...gulp.config.get('paths.tasks'));
+  config = gulp.config.get(
+    'paths.tasks',
+    'paths.assets',
+    'paths.root.dist',
+    'browserSync',
+    'env'
+  );
+  loader.loadDir(...config.tasks);
 }
 
-gulp.task('default', done => done());
-
-gulp.task('browser-sync', () => {
-  browserSync.init(gulp.config.get('browserSync.config'));
+gulp.task('default', done => {
+  if (config.env === 'production') {
+    return done(new PluginError(
+      'default-task',
+      'This is a development task, don\'t use it while running in production'
+    ));
+  }
+  return done();
 });
 
-gulp.task('clean:dist', done => rimraf(gulp.config.get('paths.root.dist'), done));
+gulp.task('browser-sync', () => {
+  browserSync.init(config.browserSync.config);
+});
 
-gulp.task('build', done => runSequence(['assets', 'dependencies', 'server:build'], done));
+gulp.task('clean:dist', done =>
+  rimraf(config.dist, done)
+);
 
-gulp.task('dev', done => runSequence('build', ['server:start', 'browser-sync'], () => {
+gulp.task('build', done =>
+  runSequence(['assets', 'dependencies', 'server:build'], done)
+);
 
-  const paths = gulp.config.get('paths.assets');
+gulp.task('dev', done =>
+  runSequence('build', ['server:start', 'browser-sync'], () => {
 
-  gulp.watch(paths.server.source, () => runSequence('server:build', 'server:restart', browserSync.reload));
-  gulp.watch(paths.scripts.source, () => runSequence('assets:scripts', browserSync.reload));
-  gulp.watch(paths.styles.watchable, ['assets:styles']);
-  gulp.watch(paths.jade.source, () => runSequence('assets:jade', 'server:restart', browserSync.reload));
-  gulp.watch(paths.static.source, () => runSequence('assets:static', browserSync.reload));
-  done();
+    const assets = config.assets;
 
-}));
+    gulp.watch(assets.styles.watchable, ['assets:styles']);
+
+    gulp.watch(assets.server.source, () =>
+      runSequence('server:build', 'server:restart', browserSync.reload)
+    );
+
+    gulp.watch(assets.scripts.source, () =>
+      runSequence('assets:scripts', browserSync.reload)
+    );
+
+    gulp.watch(assets.jade.source, () =>
+      runSequence('assets:jade', 'server:restart', browserSync.reload)
+    );
+
+    gulp.watch(assets.static.source, () =>
+      runSequence('assets:static', browserSync.reload)
+    );
+
+    done();
+  })
+);

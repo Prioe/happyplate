@@ -46,7 +46,9 @@ export default function(gulp) {
   });
 
   gulp.task('dependencies', done => runSequence([
-    'dependencies:normalize', 'dependencies:rem-unit-polyfill', 'dependencies:jquery'
+    'dependencies:normalize',
+    'dependencies:rem-unit-polyfill',
+    'dependencies:jquery'
   ], done));
 
 }

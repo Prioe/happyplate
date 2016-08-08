@@ -1,8 +1,5 @@
-import {
-  join
-} from 'path';
+import { join } from 'path';
 import _ from 'lodash';
-import dedent from 'dedent';
 import * as pkg from './package';
 
 const paths = {
@@ -74,7 +71,10 @@ const paths = {
       target: 'dist/public/vendor/rem-unit-polyfill'
     },
     jquery: {
-      source: ['/node_modules/jquery/dist/jquery.min.js', '/node_modules/jquery/dist/jquery.min.map'],
+      source: [
+        '/node_modules/jquery/dist/jquery.min.js',
+        '/node_modules/jquery/dist/jquery.min.map'
+      ],
       target: 'dist/public/vendor/jquery'
     }
   },
@@ -84,6 +84,9 @@ const paths = {
   browserSync: {
     server: 'src/server/**/*',
     assets: 'src/assets/**/*'
+  },
+  _test: {
+    source: '!src/_test'
   }
 };
 
@@ -95,15 +98,19 @@ const config = {
   },
   concatenadedFileName: 'all',
   headers: {
-    full: dedent `
-      /*!
-       * <%= pkg.name %> - <%= pkg.description %>
-       * @version v<%= pkg.version %>
-       * @link <%= pkg.homepage %>
-       * @license <%= pkg.license %>
-      */
-    `,
-    short: '/*! <%= pkg.name %> v<%= pkg.version %> | <%= pkg.license %> License | <%= pkg.homepage %> */'
+    full: [
+      '/*!',
+      ' * <%= pkg.name %> - <%= pkg.description %>',
+      ' * @version v<%= pkg.version %>',
+      ' * @link <%= pkg.homepage %>',
+      ' * @license <%= pkg.license %>',
+      '*/'
+    ].join('\n'),
+    short: [
+      '/*! <%= pkg.name %> v<%= pkg.version %> |',
+      '<%= pkg.license %> License |',
+      '<%= pkg.homepage %> */'
+    ].join(' ')
   },
   faviconsOptions: {
     appName: pkg.name,
@@ -135,10 +142,8 @@ const config = {
 };
 
 {
-  const {
-    deepMapValues
-  } = _.mixin(require('lodash-deep'));
-  config.paths = deepMapValues(paths, (value) => join(__dirname, value));
+  const { deepMapValues } = _.mixin(require('lodash-deep'));
+  config.paths = deepMapValues(paths, value => join(__dirname, value));
   config.package = pkg;
   config.env = process.env.NODE_ENV ? process.env.NODE_ENV.trim() : '';
 }

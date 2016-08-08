@@ -36,7 +36,8 @@ export default function(gulp) {
 
   gulp.task('assets:scripts', done => {
 
-    const concatFilter = filter(['**/*', '!**/polyfills.js'], { restore: true });
+    const concatFilter =
+      filter(['**/*', '!**/polyfills.js'], { restore: true });
 
     pump([
       gulp.src(paths.scripts.source),
@@ -46,7 +47,9 @@ export default function(gulp) {
       babel(),
       sourcemaps.init(),
       uglify(),
-      header(gulp.config.get('headers.short'), { pkg: gulp.config.get('package') }),
+      header(gulp.config.get('headers.short'), {
+        pkg: gulp.config.get('package')
+      }),
       rename({ suffix: '.min' }),
       sourcemaps.write('.'),
       gulp.dest(paths.scripts.target)
@@ -72,7 +75,10 @@ export default function(gulp) {
       sass().on('error', sass.logError),
       autoprefixer(),
       cleanCSS(),
-      rename({ basename: gulp.config.get('concatenadedFileName'), suffix: '.min' }),
+      rename({
+        basename: gulp.config.get('concatenadedFileName'),
+        suffix: '.min'
+      }),
       sourcemaps.write('.'),
       gulp.dest(paths.styles.target),
       gulp.browserSync.stream()
@@ -97,7 +103,13 @@ export default function(gulp) {
 
     pump([
       gulp.src(paths.favicon.inject.target),
-      inject(source, { relative: false, ignorePath: 'dist', addPrefix: '..', addRootSlash: false, name: 'favicon' }),
+      inject(source, {
+        relative: false,
+        ignorePath: 'dist',
+        addPrefix: '..',
+        addRootSlash: false,
+        name: 'favicon'
+      }),
       gulp.dest(paths.jade.target)
     ], done);
   });

@@ -7,5 +7,7 @@
     'timeline', 'timelineEnd', 'timeStamp', 'trace', 'warn'
   ];
   const console = (window.console = window.console || {});
-  methods.filter(method => !console[method]).map(method => { console[method] = () => {}; });
+  methods.filter(method => !console[method]).map(method => {
+    console[method] = () => {};
+  });
 }
