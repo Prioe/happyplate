@@ -134,6 +134,7 @@ const config = {
       'setClasses',
       'addTest',
       'html5printshiv',
+      'html5shiv',
       'testProp',
       'fnBind',
       'testStyles'
