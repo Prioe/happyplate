@@ -3,10 +3,6 @@ node_js:
   - "6"
   - "6.1"
   - "5"
-  - "4"
-  - "0.12"
-  - "0.11"
-  - "0.10"
 addons:
   code_climate:
     repo_token: c011b67e8a01499f70e4cdf578edd31500358c40e25bfc3555d3b70b45cd032b
