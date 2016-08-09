@@ -39,7 +39,7 @@ const paths = {
       target: 'dist/public'
     },
     jade: {
-      source: 'src/assets/jade/**/*.jade',
+      source: 'src/assets/jade/**/*.pug',
       target: 'dist'
     },
     server: {

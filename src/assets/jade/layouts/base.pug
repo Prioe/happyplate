@@ -9,7 +9,7 @@ html.no-js(lang='')
 
   head
     block head
-    include ../includes/head.jade
+    include ../includes/head
     //- favicon:jade
     //- endinject
 
@@ -31,8 +31,8 @@ html.no-js(lang='')
       .footer__content
         a.github-button(href='https://github.com/prioe', data-style='mega', data-count-href='/prioe/followers', data-count-api='/users/prioe#followers', data-count-aria-label='# followers on GitHub', aria-label='Follow @prioe on GitHub') Follow @prioe
 
-    include ../includes/scripts.jade
+    include ../includes/scripts
     block scripts
 
     if env.trim() == 'testing'
-      include ../includes/mocha.jade
+      include ../includes/mocha

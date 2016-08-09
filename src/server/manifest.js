@@ -27,7 +27,7 @@ const manifest = {
       register: 'visionary',
       options: {
         engines: {
-          jade: 'jade'
+          pug: 'pug'
         },
         path: './views',
         context: {
