@@ -38,8 +38,8 @@ const paths = {
       source: 'src/assets/static/**/*',
       target: 'dist/public'
     },
-    jade: {
-      source: 'src/assets/jade/**/*.pug',
+    pug: {
+      source: 'src/assets/pug/**/*.pug',
       target: 'dist'
     },
     server: {
@@ -53,11 +53,11 @@ const paths = {
       source: ['src/assets/img/favicon.png'],
       target: 'dist/public/favicons',
       inject: {
-        target: ['src/assets/jade/**/*.jade']
+        target: ['src/assets/pug/**/*.pug']
       }
     },
     modernizr: {
-      source: ['src/assets/**/*.@(js|?(s)css|jade)'],
+      source: ['src/assets/**/*.@(js|?(s)css|pug)'],
       target: 'dist/public/js'
     }
   },

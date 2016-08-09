@@ -60,8 +60,8 @@ gulp.task('dev', done =>
       runSequence('assets:scripts', browserSync.reload)
     );
 
-    gulp.watch(assets.jade.source, () =>
-      runSequence('assets:jade', 'server:restart', browserSync.reload)
+    gulp.watch(assets.pug.source, () =>
+      runSequence('assets:pug', 'server:restart', browserSync.reload)
     );
 
     gulp.watch(assets.static.source, () =>

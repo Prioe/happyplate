@@ -12,4 +12,4 @@
 # TECHNOLOGY COLOPHON
 
     CSS3, HTML5
-    Hapi, Jade, SASS, jQuery, Modernizr, Normalize.css
+    Hapi, Pug, SASS, jQuery, Modernizr, Normalize.css

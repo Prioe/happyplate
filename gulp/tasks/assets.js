@@ -20,10 +20,10 @@ export default function(gulp) {
   const paths = gulp.config.get('paths.assets');
   const runSequence = use(gulp);
 
-  gulp.task('assets:jade', done => {
+  gulp.task('assets:pug', done => {
     pump([
-      gulp.src(paths.jade.source),
-      gulp.dest(paths.jade.target)
+      gulp.src(paths.pug.source),
+      gulp.dest(paths.pug.target)
     ], done);
   });
 
@@ -98,8 +98,9 @@ export default function(gulp) {
       iconsFilter.restore,
       htmlFilter,
       html2jade({ bodyless: true }),
+      rename({ extname: '.pug' }),
       gulp.dest(paths.server.includes.target)
-    ]);
+    ], done);
 
     pump([
       gulp.src(paths.favicon.inject.target),
@@ -110,16 +111,22 @@ export default function(gulp) {
         addRootSlash: false,
         name: 'favicon'
       }),
-      gulp.dest(paths.jade.target)
-    ], done);
+      gulp.dest(paths.pug.target)
+    ]);
   });
 
-  gulp.task('assets', done => runSequence([
-    gulp.config.get('env') !== 'production' ? 'assets:jade' : 'assets:favicon',
-    'assets:static',
-    'assets:scripts',
-    'assets:modernizr',
-    'assets:styles'
-  ], done));
+  gulp.task('assets', done => {
+    const tasks = [[
+      'assets:pug',
+      'assets:static',
+      'assets:scripts',
+      'assets:modernizr',
+      'assets:styles'
+    ]];
+    if (gulp.config.get('env') === 'production') {
+      tasks.push('assets:favicon');
+    }
+    runSequence(...tasks, done);
+  });
 
 }
